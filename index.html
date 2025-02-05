@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://static.vecteezy.com/system/resources/previews/036/134/156/original/pink-coquette-frame-heart-shape-aesthetic-watercolor-png.png') no-repeat center center;
+            background-size: 50%; /* Adjusted size to fit inside the screen */
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            color: #4a4a4a;
+            padding: 50px;
+            margin: 0;
+            background-attachment: fixed;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        h1 {
+            font-size: 60px;
+            color: #f8b2b2;
+            text-shadow: 2px 2px 5px rgba(255, 192, 203, 0.5);
+        }
+        .message {
+            font-size: 22px;
+            background-color: rgba(255, 192, 203, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 20px;
+            max-width: 600px;
+            box-shadow: 0px 0px 15px rgba(255, 105, 180, 0.3);
+        }
+        .form-container {
+            background-color: rgba(255, 228, 230, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            width: 50%;
+            text-align: center;
+            box-shadow: 0px 0px 15px rgba(255, 105, 180, 0.3);
+            margin-top: 30px;
+        }
+        input[type="text"], textarea {
+            width: 80%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #ff6a8f;
+            font-size: 16px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        input[type="submit"] {
+            background-color: #ff6a8f;
+            color: white;
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        input[type="submit"]:hover {
+            background-color: #ff3e58;
+            box-shadow: 0px 0px 20px rgba(255, 105, 180, 0.5);
+        }
+        #thankYouMessage {
+            display: none;
+            margin-top: 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Audio Player -->
+    <audio autoplay loop>
+        <source src="https://drive.google.com/file/d/1ghURuo2miHC1QjurT400QsGxuRg3zocc/view?usp=sharing" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <h1> Happy Valentine's Day 💖 </h1>
+        <div class="message">
+            <p> Wishing you a Valentine's full of love! 💕 </p>
+        </div>
+        <div class="form-container">
+            <h3> Send your message! </h3>
+            <form id="messageForm" action="https://docs.google.com/forms/d/e/1FAIpQLScGk3_91K8hOQZCy07Y4Omt-8qEQr8X55vowZfWTTwmzS4ucg/formResponse" method="POST" target="hidden_iframe" onsubmit="showThankYou()">
+                <label for="name"> Name: </label>
+                <input type="text" name="entry.147439108" id="name" required>
+                <label for="message"> Your Message:</label>
+                <textarea name="entry.452257861" id="message" rows="4" required></textarea>
+                <input type="submit" value="Send 💌 ">
+            </form>
+        </div>
+        <div id="thankYouMessage">
+            <h2> Thank you for your message! </h2>
+            <p><strong>From:</strong> <span id="userName"></span></p>
+            <p><strong>Your Message:</strong> <span id="userMessage"></span></p>
+        </div>
+    </div>
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+    <script>
+        function showThankYou() {
+            setTimeout(function() {
+                var name = document.getElementById('name').value;
+                var message = document.getElementById('message').value;
+                document.getElementById('userName').textContent = name;
+                document.getElementById('userMessage').textContent = message;
+                document.getElementById('thankYouMessage').style.display = 'block';
+                document.getElementById('messageForm').reset();
+            }, 500);
+        }
+    </script>
+</body>
+</html>
